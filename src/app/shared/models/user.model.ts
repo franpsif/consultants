@@ -1,6 +1,6 @@
 import { Comment } from './comment.model';
 
-export class Consultant {
+export class User {
     public id: number;
     public created: Date;
     public modified: Date;

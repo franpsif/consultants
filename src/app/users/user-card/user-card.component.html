@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <img mat-card-avatar src="{{ user.profilePicture }}">
+    <mat-card-title>{{ user.shortName }} {{ user.fullName }}</mat-card-title>
+    <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ user.shortMe }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent">SEE COMMENTS</button>
+  </mat-card-actions>
+</mat-card>

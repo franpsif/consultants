@@ -1,5 +1,11 @@
-<mat-grid-list cols="3" rowHeight="2:1" gutterSize="40px">
-    <mat-grid-tile *ngFor="let user of usersList">
-        <app-user-card fxFlex [user]="user"></app-user-card>
-    </mat-grid-tile>    
-</mat-grid-list>
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-grid-list fxFlexFill fxFlex="80%" class="grid-list" cols="3" rowHeight="200" gutterSize="40px">
+        <mat-grid-tile *ngFor="let user of showedUserList">
+            <app-user-card fxFlex [user]="user"></app-user-card>
+        </mat-grid-tile>    
+    </mat-grid-list>
+    <hr>
+    <div class="show-more-button" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="showMoreUsers()" [disabled]="usersShowedCount >= usersList.length">Show more users</button>
+    </div>    
+</div>

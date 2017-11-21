@@ -1,3 +1,4 @@
+import { CustomMaterialModule } from './material/custom-material.module';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    UsersModule
+    UsersModule,
+    CustomMaterialModule
   ],
   providers: [
     UsersService

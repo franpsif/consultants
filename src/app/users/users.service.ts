@@ -9,16 +9,15 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class UsersService {
-    usersList: User[];
+    usersList: User[] = [];
     baseUrl = 'http://demopeople.exolever.com/api/';
 
     constructor(private http: Http) { }
 
-    getUsersList(): Observable<void> {
+    getUsersList(): Observable<User[]> {
         return this.http.get(this.baseUrl + 'consultants')
         .map((response: Response) => {
             const data = response.json();
-            const newUsersList: User[] = [];
 
             for (const user of data) {
                 const newComments: Comment[] = [];
@@ -34,10 +33,10 @@ export class UsersService {
                 user.full_name, user.date_joined, user.status, user.gender, user.short_me, user.location, user.profile_picture,
                 newComments);
 
-                newUsersList.push(newUser);
+                this.usersList.push(newUser);
             }
 
-            this.usersList = newUsersList;
+            return this.usersList;
         })
         .catch(
             (error: Response) => {

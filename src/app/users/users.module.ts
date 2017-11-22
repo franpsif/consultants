@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { UsersComponent } from './users.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { HttpModule } from '@angular/http';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   imports: [
@@ -13,8 +14,12 @@ import { HttpModule } from '@angular/http';
   ],
   declarations: [
     UsersComponent,
-    UserCardComponent
-],
+    UserCardComponent,
+    UserDetailsComponent
+  ],
+  entryComponents: [
+    UserDetailsComponent
+  ],
   exports: [
     UsersComponent
   ]

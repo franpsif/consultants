@@ -1,4 +1,4 @@
-
+import { fakeUser } from './test-data/test-data';
 import { User } from '../models/user.model';
 import { UsersService } from '../../users/users.service';
 // tslint:disable-next-line:import-blacklist
@@ -35,7 +35,7 @@ export class FakeUsersService extends UsersService {
     const newContent: User[] = [];
 
     for (let i = 0; i < usersCount; i++) {
-      newContent.push(new User(i, new Date(), new Date(), '', '', '' , '', new Date(), '', '', '', '', '', []));
+      newContent.push(fakeUser);
     }
 
     this.content = newContent;

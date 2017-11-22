@@ -1,3 +1,5 @@
+import { User } from '../../models/user.model';
+
 export const mockResponse = [
     {
         id: 1,
@@ -56,3 +58,5 @@ export const mockResponse = [
         profile_picture: 'https://randomuser.me/api/portraits/men/2.jpg'
     }
 ];
+
+export const fakeUser = new User(999, new Date(), new Date(), '', '', '', '', new Date(), '', '', '', '', '', []);

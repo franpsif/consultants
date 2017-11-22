@@ -9,7 +9,17 @@
       {{ user.shortMe }}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="accent">SEE COMMENTS</button>
-  </mat-card-actions>
+
+    <mat-card-actions *ngIf="!showDetails">
+      <button mat-raised-button color="accent" (click)="onSeeDetails()">SEE DETAILS</button>
+    </mat-card-actions>
+
+  <div *ngIf="showDetails">
+    <hr>
+    <mat-card-footer class="card-footer">	
+      <p>Date joined: {{ user.dateJoined | date:'shortDate' }}</p>
+      <p>Location: {{ user.location }}</p>
+    </mat-card-footer>
+  </div>
+  
 </mat-card>

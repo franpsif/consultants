@@ -1,3 +1,4 @@
+import { fakeUser } from '../../shared/testing/test-data/test-data';
 import { Comment } from '../../shared/models/comment.model';
 import { User } from '../../shared/models/user.model';
 import { CustomMaterialModule } from '../../material/custom-material.module';
@@ -25,7 +26,7 @@ describe('UserCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserCardComponent);
     component = fixture.componentInstance;
-    component.user = new User(999, new Date(), new Date(), '', '', '', '', new Date(), '', '', '', '', '', []);
+    component.user = fakeUser;
 
     fixture.detectChanges();
   });

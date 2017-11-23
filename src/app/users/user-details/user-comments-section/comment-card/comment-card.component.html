@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ comment.user }} ({{ comment.modified | date:'shortDate' }})</mat-card-title>
+      <mat-card-subtitle>{{ comment.subject }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="comment-body">
+        {{ comment.body }}
+      </p>
+    </mat-card-content>
+
+    <mat-card-footer class="card-footer">	
+      <!-- Rating -->
+    </mat-card-footer>
+    
+  </mat-card>

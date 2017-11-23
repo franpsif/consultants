@@ -23,14 +23,14 @@ export class UsersService {
                 const newComments: Comment[] = [];
 
                 for (const comment of user.comments) {
-                    const newComment = new Comment(comment.id, comment.created, comment.modified, comment.subject,
+                    const newComment = new Comment(comment.id, new Date(comment.created), new Date(comment.modified), comment.subject,
                     comment.body, comment.status, comment.rating, comment.user, comment.consultant);
 
                     newComments.push(newComment);
                 }
 
-                const newUser = new User(user.id, user.created, user.modified, user.uuid, user.email, user.short_name,
-                user.full_name, user.date_joined, user.status, user.gender, user.short_me, user.location, user.profile_picture,
+                const newUser = new User(user.id, new Date(user.created), new Date(user.modified), user.uuid, user.email, user.short_name,
+                user.full_name, new Date(user.date_joined), user.status, user.gender, user.short_me, user.location, user.profile_picture,
                 newComments);
 
                 this.usersList.push(newUser);

@@ -1,0 +1,25 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Comments
+      </mat-panel-title>
+      <mat-panel-description>
+        ({{ user.comments.length }} comments)
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-comment-card *ngFor="let comment of user.comments" [comment]="comment"></app-comment-card>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Create new comment
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    
+    <!-- Add the form and the action button -->
+
+  </mat-expansion-panel>
+</mat-accordion>

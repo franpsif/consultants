@@ -1,4 +1,5 @@
 import { User } from '../../models/user.model';
+import { Comment } from '../../models/comment.model';
 
 export const mockResponse = [
     {
@@ -60,3 +61,5 @@ export const mockResponse = [
 ];
 
 export const fakeUser = new User(999, new Date(), new Date(), '', '', '', '', new Date(), '', '', '', '', '', []);
+
+export const fakeComment = new Comment(999, new Date(), new Date(), '', '', '', 999, '', 999);

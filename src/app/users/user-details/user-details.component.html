@@ -2,7 +2,10 @@
 
 <div>
   <mat-dialog-content>
-    <app-user-card fxFlex [user]="user" [showDetails]="true"></app-user-card>
+    <div fxLayout="column" fxLayoutAlign="space-between stretch">
+        <app-user-card fxFlex [user]="user" [showDetails]="true"></app-user-card>
+        <app-user-comments-section [user]="user"></app-user-comments-section>
+    </div>    
   </mat-dialog-content>
   <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button mat-dialog-close color="warn">Close</button>

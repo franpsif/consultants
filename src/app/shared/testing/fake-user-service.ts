@@ -5,6 +5,7 @@ import { UsersService } from '../../users/users.service';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Comment } from '../../shared/models/comment.model';
 
 @Injectable()
 export class FakeUsersService extends UsersService {
@@ -24,6 +25,14 @@ export class FakeUsersService extends UsersService {
   }
 
   public getUsersList(): Observable<User[]> {
+    if (this.throwError) {
+        return Observable.throw(new Error());
+    } else {
+        return Observable.of(this.content);
+    }
+  }
+
+  public saveNewComment(comment: Comment): Observable<Response> {
     if (this.throwError) {
         return Observable.throw(new Error());
     } else {

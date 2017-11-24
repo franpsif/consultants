@@ -1,5 +1,5 @@
-import { mockResponse } from '../shared/testing/test-data/test-data';
-import { MockBackend } from '@angular/http/testing';
+import { fakeComment, fakeUser, mockResponse } from '../shared/testing/test-data/test-data';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import {
     BaseRequestOptions,
     ConnectionBackend,
@@ -64,6 +64,59 @@ describe('Service: Users', () => {
         expect(users[1].comments[0].id).toBe(498);
       });
     });
+  });
+
+  describe('saveNewComment', () => {
+    let connectionInfo: MockConnection;
+
+    beforeEach(inject([UsersService, XHRBackend], (injectedUserService, injectedMockBackend) => {
+      userService = injectedUserService;
+      mockBackend = injectedMockBackend;
+
+      mockBackend.connections.subscribe((connection) => {
+        connectionInfo = connection;
+        connection.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify([{}])
+        })));
+      });
+    }));
+
+    it('should set the header as application/json before to call the server', () => {
+      userService.saveNewComment(fakeComment);
+      expect(connectionInfo.request.headers.get('content-type')).toBe('application/json');
+    });
+
+    it('should send to the server the correct comment', () => {
+      userService.saveNewComment(fakeComment);
+      expect(JSON.parse(connectionInfo.request.getBody()).id).toBe(999);
+    });
+  });
+
+  describe('addCommentToUser', () => {
+    it('should add the new comment to the user if it exists and notify the change',
+    inject([UsersService], (injectedUserService: UsersService) => {
+      injectedUserService.usersList.push(fakeUser);
+
+      const response = new Response(new ResponseOptions());
+      spyOn(response, 'json').and.returnValue({
+        id: 888,
+        created: new Date(),
+        modified: new Date(),
+        subject: '',
+        body: '',
+        status: '',
+        rating: 10,
+        user: '',
+        consultant: 999
+      });
+
+      spyOn(injectedUserService.userModified, 'next');
+
+      injectedUserService.addCommentToUser(response);
+
+      expect(injectedUserService.usersList[0].comments.length).toBe(1);
+      expect(injectedUserService.userModified.next).toHaveBeenCalled();
+    }));
   });
 
   afterEach(() => {

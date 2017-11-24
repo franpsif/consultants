@@ -13,12 +13,16 @@ import { UserCommentsSectionComponent } from './user-comments-section.component'
 describe('UserCommentsSectionComponent', () => {
   let component: UserCommentsSectionComponent;
   let fixture: ComponentFixture<UserCommentsSectionComponent>;
+  const userServiceMock = new FakeUsersService();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         CustomMaterialModule,
         UsersModule
+      ],
+      providers: [
+        {provide: UsersService, useValue: userServiceMock}
       ]
     })
     .compileComponents();

@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { AddCommentComponent } from './user-details/user-comments-section/add-comment/add-comment.component';
 import { CommentCardComponent } from './user-details/user-comments-section/comment-card/comment-card.component';
 import { UserCommentsSectionComponent } from './user-details/user-comments-section/user-comments-section.component';
 import { CustomMaterialModule } from '../material/custom-material.module';
@@ -12,14 +14,16 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   imports: [
     SharedModule,
     CustomMaterialModule,
-    HttpModule
+    HttpModule,
+    FormsModule
   ],
   declarations: [
     UsersComponent,
     UserCardComponent,
     UserDetailsComponent,
     UserCommentsSectionComponent,
-    CommentCardComponent
+    CommentCardComponent,
+    AddCommentComponent
   ],
   entryComponents: [
     UserDetailsComponent

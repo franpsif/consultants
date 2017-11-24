@@ -1,9 +1,9 @@
 import { User } from '../shared/models/user.model';
 import { Comment } from '../shared/models/comment.model';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, RequestOptions, Response } from '@angular/http';
 // tslint:disable-next-line:import-blacklist
-import { Observable } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -11,6 +11,7 @@ import 'rxjs/add/operator/catch';
 export class UsersService {
     usersList: User[] = [];
     baseUrl = 'http://demopeople.exolever.com/api/';
+    userModified = new Subject<User>();
 
     constructor(private http: Http) { }
 
@@ -45,4 +46,26 @@ export class UsersService {
         );
     }
 
+    saveNewComment(comment: Comment): Observable<Response> {
+        const headers = new Headers({ 'Content-Type': 'application/json' });
+        const options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.baseUrl + 'comment/', comment, options)
+        .catch((error: Response) => {
+            return Observable.throw('Something went wrong saving the new comment');
+        });
+    }
+
+    addCommentToUser(response: Response) {
+        const commentObject = response.json();
+        const newComment = new Comment(commentObject.id, new Date(commentObject.created), new Date(commentObject.modified),
+            commentObject.subject, commentObject.body, commentObject.status, commentObject.rating, commentObject.user,
+            commentObject.consultant);
+        const userToModify = this.usersList.find(user => user.id === newComment.consultant);
+
+        if (userToModify) {
+            userToModify.comments.push(newComment);
+            this.userModified.next(userToModify);
+        }
+    }
 }

@@ -1,20 +1,23 @@
 <mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
+  <mat-expansion-panel class="comments-expansion-panel">
+    <mat-expansion-panel-header class="expansion-panel-header">
+      <mat-panel-title class="expansion-panel-title">
         Comments
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="expansion-panel-title">
         ({{ user.comments.length }} comments)
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <app-comment-card *ngFor="let comment of user.comments" [comment]="comment"></app-comment-card>
+    <div fxLayoutGap="3px">
+      <app-comment-card *ngFor="let comment of user.comments" [comment]="comment"></app-comment-card>
+    </div>
+    
   </mat-expansion-panel>
 
   <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
+    <mat-expansion-panel-header class="expansion-panel-header">
+      <mat-panel-title class="expansion-panel-title">
         Create new comment
       </mat-panel-title>
     </mat-expansion-panel-header>

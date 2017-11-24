@@ -1,10 +1,8 @@
-<h2 mat-dialog-title>User details</h2>
-
 <div>
   <mat-dialog-content>
-    <div fxLayout="column" fxLayoutAlign="space-between stretch">
+    <div fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px">
         <app-user-card fxFlex [user]="user" [showDetails]="true"></app-user-card>
-        <app-user-comments-section [user]="user"></app-user-comments-section>
+        <app-user-comments-section [user]="user" class="comment-section"></app-user-comments-section>
     </div>    
   </mat-dialog-content>
   <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">

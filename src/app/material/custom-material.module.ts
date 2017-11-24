@@ -12,7 +12,8 @@ import {
   MatInputModule,
   MatSliderModule,
   MatSnackBarModule,
-  MatSelectModule} from '@angular/material';
+  MatSelectModule,
+  MatIconModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {
     MatInputModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   declarations: [],
   exports: [
@@ -43,7 +45,8 @@ import {
     MatInputModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ]
 })
 export class CustomMaterialModule { }

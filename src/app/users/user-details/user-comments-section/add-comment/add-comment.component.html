@@ -23,8 +23,8 @@
         <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="6" [(ngModel)]="comment.body" name="body" required placeholder="Body"></textarea>
       </mat-form-field>
 
-      <div fxLayout="row" fxLayoutAlign="start center">
-          <mat-slider name="rating" class="example-margin" [max]="5" [min]="1" [step]="1" [thumb-label]="true" [tick-interval]="1" [(ngModel)]="comment.rating"></mat-slider>
+      <div fxLayout="column" fxLayoutAlign="start strech">
+          <mat-slider name="rating" class="example-margin" [max]="10" [min]="1" [step]="1" [thumb-label]="true" [tick-interval]="1" [(ngModel)]="comment.rating"></mat-slider>
       </div>      
     </div>
     <div>

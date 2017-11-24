@@ -64,7 +64,7 @@ export class UsersService {
         const userToModify = this.usersList.find(user => user.id === newComment.consultant);
 
         if (userToModify) {
-            userToModify.comments.push(newComment);
+            userToModify.comments.unshift(newComment);
             this.userModified.next(userToModify);
         }
     }
